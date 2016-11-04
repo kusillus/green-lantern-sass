@@ -1,0 +1,70 @@
+$base: #6BDC5F;
+$principal: #32A030;
+$fondo: #333333;
+$texto: #FFFFFF;
+
+html {
+	font-family: 'Ubuntu', sans-serif;
+	font-size: 16px;
+}
+
+body {
+	background-color: $fondo;
+}
+
+@mixin circulo($tamano, $bw, $bordes){
+	width: $tamano;
+	height: $tamano;
+	border-radius: 50%;
+	box-sizing: border-box;
+	border: solid $bw $bordes;
+}
+
+.logo__base {
+	@include circulo(21rem, 1.5rem, $principal);
+	background-color: $base;
+	margin: 2rem auto;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	
+}
+
+%linea{
+	content: "";
+	width: 13rem;	
+	border-style: solid;
+	border-width: 2rem 1.5rem;
+	position: absolute;
+	margin-left: -3.5rem;
+	box-sizing: border-box;
+}
+
+.logo__details {
+	@include circulo(10rem, 2rem,$principal);
+
+	
+	&:before{
+		@extend %linea;
+		border-color: $principal transparent transparent;
+		margin-top: -3.5rem;
+	}
+
+	&:after{
+		@extend %linea;
+		border-color: transparent transparent $principal;
+		margin-top: 5.5rem;
+	}
+
+}
+
+.logo__text{
+	margin: 1rem auto;
+	text-align: center;
+	color: $texto;
+
+	& strong {
+		color: $principal;
+		font-size: 18px;
+	}
+}
